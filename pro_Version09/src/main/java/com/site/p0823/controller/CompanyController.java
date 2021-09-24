@@ -73,7 +73,8 @@ public class CompanyController {
 			String main1 = String.format("%s", Main);
 			
 			//파일저장위치
-			String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/companyImg/";
+			//String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/companyImg/";
+			String fileUrl = "C:/Users/jmp/git/repository/pro_Version09/src/main/resources/static/companyImg/";
 			//복사할 파일
 			File f = new File(fileUrl+Main);
 			//파일 업로드

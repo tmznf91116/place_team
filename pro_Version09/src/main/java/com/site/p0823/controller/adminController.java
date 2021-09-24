@@ -55,7 +55,8 @@ public class adminController {
 				String serve1 = String.format("%s", Serve);
 				
 				//파일저장위치
-				String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/productImg/";
+				//String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/productImg/";
+				String fileUrl = "C:/Users/jmp/git/repository/pro_Version09/src/main/resources/static/productImg";
 				System.out.println("fileUrl : " + fileUrl);
 				//복사할 파일
 				File f = new File(fileUrl+Main);
