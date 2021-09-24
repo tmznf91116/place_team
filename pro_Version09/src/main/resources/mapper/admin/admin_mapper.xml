@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.AdminMapper">
+
+	<select id="" resultType="com.site.p0823.Vo.ProductVo">
+
+	</select>
+
+	<!-- 상품 등록 저장 -->
+	<insert id="insertProductOne">
+
+		INSERT INTO product_Store
+		(category_code,
+		product_name,
+		product_stock,
+		product_Brand,
+		product_Main,
+		product_Serve,
+		product_desc,
+		product_date,
+		product_option,
+		product_price)
+		VALUES
+		(#{category_Code},
+		#{product_Name},
+		#{product_Stock},
+		#{product_Brand},
+		#{product_Main},
+		#{product_Serve},
+		#{product_Desc},
+		sysdate,
+		#{product_Option},
+		#{product_Price}
+		)
+
+	</insert>
+	<!-- 상품 수정 -->
+	<update id="UpdateModfiy" parameterType="int">
+	Update product_Store set
+	product_stock = #{ arg2},
+	product_price = #{ arg1}
+	where product_Number = #{ arg0}
+	</update>
+	
+	<!-- 업체 수정 -->
+	<update id="companyUpdateModfiy" parameterType="int">
+	Update Construction_Company set
+	cc_Pname = #{ param1}
+	where cc_Id = #{ arg0}
+	</update>
+
+	<!-- 상품 삭제 검색 -->
+	<select id="selectListAll"
+		resultType="com.site.p0823.Vo.ProductVo">
+		select * from product_Store
+		where product_name like
+		'%'||#{deleteProductName}||'%'
+		order by product_number desc
+	</select>
+
+	<!-- 업체삭제 선택 -->
+	<delete id="companyDeleteOne">
+		DELETE FROM Construction_Company
+		WHERE CC_ID =
+		#{deleteNum}
+	</delete>
+	
+	<!-- 상품삭제 선택 -->
+	<delete id="selectDeleteOne">
+		DELETE FROM product_Store
+		WHERE product_number =
+		#{deleteNum}
+	</delete>
+
+	<!-- 업체 삭제 검색 -->
+	<select id="selectCompanyAllList"
+		resultType="com.site.p0823.Vo.CompanyVo">
+		select * from construction_company
+		where cc_cname like 
+		'%'||#{deletecompanyName}||'%'
+		order by cc_id desc
+	</select>
+
+	<!-- 시공문의 관리 -->
+	<select id="selectInquiryOfficer"
+		resultType="com.site.p0823.Vo.InquiryVo">
+		select * from
+		(select rownum rnum,c.* from
+		(select * from
+		Construction_Inquiry
+		order by cd_bgroup desc,cd_bstep asc) c)
+		where rnum
+		between #{param1} and #{param2}
+	</select>
+	<!-- 일반문의 관리 -->
+	<select id="selectuserInquiryOfficer"
+		resultType="com.site.p0823.Vo.user_InquiryVo">
+		select * from
+		(select rownum rnum,c.* from
+		(select * from
+		user_inquiry
+		order by ud_bgroup desc,ud_bstep asc) c)
+		where rnum
+		between #{param1} and #{param2}
+	</select>
+
+	<!-- 문의 게시판 수 -->
+	<select id="selectListCount" resultType="int">
+		select count(*) from
+		Construction_Inquiry
+	</select>
+	<select id="selectuserListCount" resultType="int">
+		select count(*) from
+		user_inquiry
+	</select>
+
+
+	<!-- 배송현황 리스트 출력 날짜 기준 최신으로 맞춰서 역순 정렬  -->
+	<select id="selectDeliveryList" resultType="com.site.p0823.Vo.Delivery_StatusVo">
+		select rownum rnum ,a.* from(
+        select d.* from Delivery_Status d
+      	order by d.delivery_date desc) a
+        order by rnum asc
+	</select>
+
+	<!-- 배송현황 업데이트 -->
+	<update id="updateLocationUpDate" >
+	    UPDATE Delivery_Status set 
+        delivery_Location = #{location}
+        where user_Id = #{deliveryVo.user_Id}
+        and product_Count = #{deliveryVo.product_Count}
+        and product_Number = #{deliveryVo.product_Number}
+	</update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

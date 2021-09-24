@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.inquiresBoardMapper">
+
+	<!-- 시공문의 내역 정보 가지고 오기 -->
+	<select id="selcetInquiresOne"
+		resultType="com.site.p0823.Vo.Construction_InquiryVo">
+		select * from construction_inquiry
+		where cd_id = #{cd_id}
+	</select>
+
+	<!-- 시공문의내역 답변 저장 -->
+	<insert id="insertComInquiresSet">
+		INSERT INTO Construction_Inquiry
+		(CD_title,
+		CD_content,
+		CD_company,
+		user_nickname,
+		CD_bgroup,
+		CD_bstep,
+		CD_bdate,
+		CD_bhit,
+		Reply_check)
+		VALUES
+		(#{InquiryVo.cd_Title},
+		#{InquiryVo.cd_Content},
+		#{InquiryVo.cd_Company},
+		#{InquiryVo.user_Nickname},
+		#{InquiryVo.cd_Id},
+		1,
+		sysdate,
+		0,
+		#{reply_Check})
+	</insert>
+	<!-- 시공문의내역 답변 저장하면 서 기존 질문 업데이트 -->
+	<update id="updateComInquiresSet">
+		update Construction_Inquiry
+		set Reply_check =
+		#{reply_Check}
+		where cd_id = #{InquiryVo.cd_Id}
+	</update>
+
+
+
+	<!-- 시공문의 내역 정보 가지고 오기 -->
+	<select id="selectUserInquiresOne"
+		resultType="com.site.p0823.Vo.user_InquiryVo">
+		select * from user_inquiry
+		where ud_id = #{ud_id}
+	</select>
+	<!-- 일반문의내역 답변 저장 -->
+	<insert id="insertUserInquiresSet">
+		INSERT INTO user_inquiry
+		(UD_title,
+		UD_content,
+		user_nickname,
+		UD_bgroup,
+		UD_bstep,
+		UD_bdate,
+		UD_hit,
+		Reply_check)
+		VALUES
+		(#{InquiryVo.ud_Title},
+		#{InquiryVo.ud_Content},
+		#{InquiryVo.user_Nickname},
+		#{InquiryVo.ud_Id},
+		1,
+		sysdate,
+		0,
+		#{reply_Check})
+	</insert>
+	<!-- 일반문의내역 답변 저장하면 서 기존 질문 업데이트 -->
+	<update id="updateUserInquiresSet">
+		update user_inquiry
+		set Reply_check =
+		#{reply_Check}
+		where ud_id = #{InquiryVo.ud_Id}
+	</update>
+
+
+
+
+
+
+
+
+</mapper>
+

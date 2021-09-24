@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.communityMapper">
+
+
+	<!-- 커뮤니티 글쓰기 -->
+	<insert id="insertCommunityOneUpload">
+		INSERT INTO
+		community_board
+		(com_title,
+		com_img1,
+		com_img2,
+		com_img3,
+		com_content1,
+		com_content2,
+		com_content3,
+		user_nickname,
+		com_date,
+		com_hit)
+		VALUES
+		(#{communityVo.com_Title},
+		#{communityVo.com_Img1},
+		#{communityVo.com_Img2},
+		#{communityVo.com_Img3},
+		#{communityVo.com_Content1},
+		#{communityVo.com_Content2},
+		#{communityVo.com_Content3},
+		#{communityVo.user_Nickname},
+		sysdate,
+		0)
+
+	</insert>
+
+	<!-- 커뮤니티 글 리스트 불러오기 -->
+	<select id="selectAllCommunityList"
+		resultType="com.site.p0823.Vo.communityVo">
+		select * from community_board
+		ORDER by com_date desc
+	</select>
+
+	<!-- 커뮤니티 글 하나 불러오기 -->
+	<select id="selectOnecommunityGet"
+		resultType="com.site.p0823.Vo.communityVo">
+		select * from community_board
+		where com_Num = #{com_Num}
+	</select>
+	<!-- 글 하나 불러올때 마다 해당되는 히트 증가 -->
+	<update id="updateCommunityHitUp">
+		update community_board set
+		com_hit = com_hit + 1
+		where
+		com_num = #{com_Num}
+	</update>
+
+	<!-- 댓글 전체 리스트 -->
+	<select resultType="com.site.p0823.Vo.CommunityCommentVo"
+		id="SelectCommentAll">
+		select * from community_comment 
+		where com_num=#{com_num}
+		order by comment_no desc
+	</select>
+
+	<!-- 댓글 총 개수 -->
+	<select id="SelectCommentCount" resultType="int">
+		select count(*) from
+		community_comment where com_num=#{com_num}
+	</select>
+
+
+	<!-- 댓글 추가 -->
+	<insert id="InsertCommentWrite" >
+		<selectKey resultType="int" keyProperty="comment_no"
+			order="BEFORE">
+			select community_comment_seq.nextval from dual
+		</selectKey> 
+		insert into community_comment values(
+	     #{comment_no},#{cCommentVo.comment_content},sysdate,#{cCommentVo.user_nickname},#{cCommentVo.com_num}
+	   )
+
+	</insert>
+
+	<!-- 댓글 1개 리스트 -->
+	<select id="SelectCommentWrite"
+		resultType="com.site.p0823.Vo.CommunityCommentVo">
+		  select * from community_comment where
+	      comment_content = #{cCommentVo.comment_content}
+	      and user_nickname = #{cCommentVo.user_nickname}
+	      and com_num = #{cCommentVo.com_num}
+	</select>
+
+
+
+</mapper>

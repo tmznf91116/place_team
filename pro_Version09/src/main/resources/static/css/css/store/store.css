@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/*상세페이지 소개*/
+.xans-product-detail .detailArea {
+    padding: 12px 0 0;
+}
+
+.xans-product-detail.top_inner {
+    max-width: 1250px;
+    min-height: 820px;
+}
+.xans-product-detail {
+    position: relative;
+    margin: 0 auto;
+    padding: 0 0 0;
+}
+
+/*상세페이지 소개2*/
+
+.xans-product-detail .imgArea .keyImg {
+    text-align: center;
+    padding: 0 0 0 85px;
+    font-size: 0;
+}
+
+/*관련 상품 고개란*/
+.xans-product-additional {
+	clear: both;
+}
+
+.ec-base-tab_detail {
+	position: relative;
+	padding: 135px 0 0;
+	overflow: hidden;
+}
+
+.ec-base-tab_detail .tab_margin {
+	width: 100%;
+	height: 1px;
+	background: #e8e8e8;
+	display: block;
+	margin: 0 0 -55px;
+}
+
+.ec-base-tab_detail .detail_tap_inner {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.ec-base-tab_detail .menu {
+	border-bottom: 0;
+	margin: 0 0 20px;
+	border-left: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu li:first-child.selected {
+	right: 0;
+	background: #fff;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu li.selected {
+	position: relative;
+	top: 0;
+	border-bottom: 0;
+	background: #fff !important;
+}
+
+.ec-base-tab_detail.grid5 .menu li {
+	width: 20.5%;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu li {
+	float: none;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.ec-base-tab_detail .menu li.selected {
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #e8e8e8;
+}
+
+.ec-base-tab_detail .menu li {
+	float: left;
+	border-left: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+	border-top: 1px solid #e8e8e8;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu li.selected a {
+	border-top: 2px solid #111;
+	position: static;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.2;
+	background: #fff !important;
+	color: #222;
+}
+
+.ec-base-tab_detail .menu li.selected:first-child a {
+	left: -1px;
+}
+
+.ec-base-tab_detail[class*="grid"] .menu li a {
+	border-top: 2px solid #fff;
+	display: inline-block;
+	font-size: 15px;
+	Line-height: 1.2;
+	background: #fff;
+	width: 100%;
+	min-width: 0;
+	margin: 0;
+	font-weight: 300;
+	padding: 17px 0;
+	border: 0;
+}
+
+.ec-base-tab_detail .menu li.selected a {
+	position: relative;
+	top: -1px;
+	font-size: 15px;
+	left: -2px;
+	margin: 0 0 -1px;
+	border: 1px solid #202020;
+	border-bottom: 0;
+	color: #fff;
+	font-weight: 400;
+	background: #4a5164;
+}
+
+.ec-base-tab_detail .menu li:first-child a {
+	margin-left: 0;
+}
+
+.ec-base-tab_detail .menu li a {
+	display: block;
+	min-width: 187px;
+	margin: 0 0 0 -1px;
+	padding: 12px 5px 11px;
+	border-right: 1px solid #e8e8e8;
+	color: #707070;
+	text-decoration: none;
+	outline: 0;
+	text-align: center;
+	background: #fff;
+}
