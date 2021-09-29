@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.p0823.Vo.CompanyVo;
+import com.site.p0823.Vo.EventListVo;
 import com.site.p0823.Vo.ProductVo;
 import com.site.p0823.Vo.UserVo;
 import com.site.p0823.Vo.communityVo;
 import com.site.p0823.service.CompanyService;
+import com.site.p0823.service.EventService;
 import com.site.p0823.service.StoreService;
 import com.site.p0823.service.UserService;
 import com.site.p0823.service.communityService;
@@ -35,12 +37,16 @@ public class MainController {
 	CompanyService companyService;
 	@Autowired
 	communityService communityService;
+	@Autowired
+	EventService eventService;
 	
 	
 	DecimalFormat format = new DecimalFormat("###,###");
 	
 	@RequestMapping("index")
 	   public String index(Model model) {
+		  //이벤트 부분
+		  ArrayList<EventListVo> elist = eventService.selecteventList();
 	      //시공업체 부분
 	      ArrayList<CompanyVo> clist = companyService.selectCompanyList();
 	      //스토어부분
@@ -50,6 +56,7 @@ public class MainController {
 	      }
 	      //커뮤티티 부분
 	      ArrayList<communityVo> commlist = communityService.selectAllCommunityList();
+	      model.addAttribute("eventList", elist);
 	      model.addAttribute("companyList", clist);
 	      model.addAttribute("productList", plist);
 	      model.addAttribute("communityList", commlist);

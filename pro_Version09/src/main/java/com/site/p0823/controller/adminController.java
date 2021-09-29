@@ -55,8 +55,7 @@ public class adminController {
 				String serve1 = String.format("%s", Serve);
 				
 				//파일저장위치
-				//String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/productImg/";
-				String fileUrl = "C:/Users/jmp/git/repository/pro_Version09/src/main/resources/static/productImg";
+				String fileUrl = "C:/Users/82109/git/Project_lastFile/pro_Version09/src/main/resources/static/productImg/";
 				System.out.println("fileUrl : " + fileUrl);
 				//복사할 파일
 				File f = new File(fileUrl+Main);
@@ -137,6 +136,7 @@ public class adminController {
 		ArrayList<Delivery_StatusVo> list = adminService.selectDeliveryList();
 		for(int i=0;i<list.size();i++) {
 			list.get(i).setTotal_Price2(format.format(list.get(i).getTotal_Price()));
+			/* System.out.println(list.get(i)); */
 		}
 		
 		model.addAttribute("list", list);
@@ -144,8 +144,10 @@ public class adminController {
 	}
 	//관리자페이지 배송현황 업데이트
 	@RequestMapping("LocationUpDate")
-	public String LocationUpDate(Delivery_StatusVo delivery_StatusVo, @RequestParam String Location,Model model) {
-	      adminService.updateLocationUpDate(delivery_StatusVo,Location);
+	public String LocationUpDate(@RequestParam int user_Id, @RequestParam String Location,Model model) {
+		System.out.println("controller : " + user_Id);
+		System.out.println("controller : " + Location);
+	      adminService.updateLocationUpDate(user_Id,Location);
 	      return "redirect:/officerDelivery";
 	   }
 	

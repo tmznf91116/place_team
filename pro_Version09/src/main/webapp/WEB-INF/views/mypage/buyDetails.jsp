@@ -42,7 +42,7 @@ section {
    margin-top: 3%;
 }
 .css_input_btn {
-   width: 8%;
+   
    padding: 8px 8px 8px 8px;
    border: 1px solid #dbdbdb;
    background-color: #00C892;
@@ -242,6 +242,12 @@ footer {
    height: auto;
    background: rgb(226, 226, 226);
 }
+
+.q{
+   display: inline-block;
+   width: 14%
+}
+
 </style>
 </head>
 <body>
@@ -355,34 +361,65 @@ footer {
     <!-- 마이페이지 네비게이션 끝 -->
     </header>
     <!-- Header End -->
-    <section>
+    <section id="delivery_list">
        <c:forEach items="${delivery_StatusVo }" var="dVo">
           <div style="border: 1px dashed #dbdbdb; border-radius: 20px/20px;">
              <form action="" method="post" id="buyDetailsForm">
                 <!-- 주문일 -->
-                <span>${dVo.delivery_Date }</span>
+                <span class="q">${dVo.delivery_Date }</span>
                 <!-- 상품이미지 -->
-                <span>
+                <span class="q">
                    <a class="aTag" href=""><img alt="상품이미지" src="productImg/${dVo.product_Main }"></a>
                 </span>
                 <!-- 상품명 -->
-                <span>
+                <span class="q">
                    ${dVo.product_Name }
                </span>             
                <!-- 고유id값을 가지고 구매목록에서 상품id값 삭제 상품테이블 상품id값 +1 -->
-                  <span>
+                  <span class="q">
                      ${dVo.delivery_Location }
                   </span>
                   <!-- 구매목록에서 버튼 클릭시에만 리뷰작성가능 리뷰작성시 상품페이지 하단에 뿌려짐 -->
-                  <span>
-                     <button class="css_input_btn"><a class="aTag" href="">교환, 환불 신청</a></button>
-                  <button class="css_input_btn"><a class="aTag" href="">리뷰작성하기</a></button>
+                  <span class="q">
+                     <c:if test="${dVo.delivery_Location eq '배송준비중'}">
+                     <button class="css_input_btn" type="button" value="${dVo.user_Id }" onclick="buyDelete(${dVo.user_Id },${dVo.product_Number },${dVo.product_Count })"> 환불 신청</button>                     
+                     </c:if>
+                     <c:if test="${dVo.delivery_Location eq '출발대기'}">
+                     <button class="css_input_btn" type="button" value="${dVo.user_Id }" onclick="buyDelete(${dVo.user_Id },${dVo.product_Number },${dVo.product_Count })"> 환불 신청</button>                     
+                     </c:if>
+                     <c:if test="${dVo.delivery_Location eq '배송완료' }">
+                     <button class="css_input_btn"><a class="aTag" href="">리뷰작성하기</a></button>                                          
+                     </c:if>
+                     
                   </span><p/>
              </form>
           </div>
        </c:forEach>   
-          
     </section>
+     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+       function buyDelete(user_Id,product_Number,product_Count) {
+          $.ajax({
+             url:"/buyDelete",
+             type:"post",
+             data:{ 
+                "user_Id" : user_Id,
+                "product_Number" : product_Number,
+                "product_Count" : product_Count
+             },
+             success:function(date){  
+                alert("주문이 취소 되었습니다.");
+                location.href = "/buyDetails?s_id="+s_id;
+             },
+             error:function(){  
+                alert("error");
+             }
+          });
+       }
+    
+    </script> 
+    
+    
           <!-- top -->
       <a
          style="display: scroll; position: fixed; bottom: 10px; right: 20px; cursor: pointer;"

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.UserMapper">
+
+	<select id="" resultType="com.site.p0823.Vo.UserVo">
+
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="insertUserAdd">
+		INSERT INTO user_info
+		(user_email,
+		user_pw,
+		user_nickname,
+		SMSReceiptConsent)
+		VALUES
+		(
+		#{user_email},
+		#{user_pw},
+		#{user_nickname},
+		#{smsreceiptconsent}
+		)
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="selectLoginOne"
+		resultType="com.site.p0823.Vo.UserVo">
+		<![CDATA[
+		SELECT *
+		FROM user_info
+		WHERE user_email = #{param1} and user_pw = #{param2}
+		]]>
+	</select>
+
+	<!-- 유저검색 이메일 가져오기 -->
+	<select id="selectUserOneSearch"
+		resultType="com.site.p0823.Vo.UserVo">
+		select * from user_info where user_id = #{s_id}
+	</select>
+
+	<!-- 회원 상세부분 있는지 확인 -->
+	<select id="selectInformationYes"
+		resultType="com.site.p0823.Vo.user_DetailsVo">
+		select * from user_Details where user_id = #{s_id}
+	</select>
+
+	<!-- 회원 상세 없으면 상세 저장 -->
+	<insert id="insertDetailsSet">
+
+		INSERT INTO user_Details
+		(user_id,
+		user_tel,
+		user_address1,
+		user_address2,
+		user_address3,
+		user_name)
+		VALUES
+		(#{arg1},
+		#{param1.user_Tel},
+		#{param1.user_Address1},
+		#{param1.user_Address2},
+		#{param1.user_Address3},
+		#{param1.user_Name})
+	</insert>
+
+	<!-- 고객 문의하기 저장 -->
+	<insert id="insertUserQuestionSet">
+		INSERT INTO user_Inquiry
+		(
+		UD_title,
+		UD_content,
+		user_nickname,
+		UD_bgroup,
+		UD_bstep,
+		UD_bdate,
+		UD_hit)
+		VALUES
+		(
+		#{inquiryVo.ud_Title},
+		#{inquiryVo.ud_Content},
+		#{inquiryVo.user_Nickname},
+		USER_INQUIRY_SEQ.nextval,
+		0,
+		sysdate,
+		0)
+	</insert>
+
+
+	<!-- 검색부분 회사 -->
+	<select id="selectComSearchList"
+		resultType="com.site.p0823.Vo.CompanyVo">
+		select * from
+		construction_company
+		where cc_Cname like '%' || #{search} || '%'
+		order by cc_id desc
+	</select>
+	<!-- 검색부분 상품 -->
+	<select id="selectStoreSearchList"
+		resultType="com.site.p0823.Vo.ProductVo">
+		select * from
+		product_store
+		where product_name like '%' || #{search} || '%'
+		order by product_number desc
+	</select>
+
+
+
+
+
+
+
+
+</mapper>

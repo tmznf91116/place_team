@@ -123,6 +123,7 @@ h2 {
 footer {
    text-align: center;
    color: black;
+   margin-top: 8%;
    padding-top: 1%;
    font-size: 12px;
 }

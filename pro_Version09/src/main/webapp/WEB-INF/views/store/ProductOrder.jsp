@@ -577,7 +577,8 @@ zipbtn {
                         <span>&nbsp;|&nbsp;</span>
                         <!-- 로그인 -->
                         <!-- 로그인시 로그아웃 -->
-                        <a href="myPage?nickname=${session_nickName }" class="layout-navigation-bar-login__item">마이페이지</a>
+                        <a href="myPage?nickname=${session_nickName }"
+                           class="layout-navigation-bar-login__item">마이페이지</a>
                         <!-- 회원가입 -->
                         <!-- 로그인시 마이페이지 -->
                         <!-- if문 session값을 확인하여 메뉴를 달리해준다. -->
@@ -631,7 +632,7 @@ zipbtn {
          </div>
       </div>
    </header>
-      <!-- headerEnd -->
+   <!-- headerEnd -->
    <div class="main_wrap">
       <section id="">
          <form action="ProductOrderCheck" method="post">
@@ -648,28 +649,30 @@ zipbtn {
                   <table>
                      <tr>
                         <div>
-                           <span class="registraionLable">우편번호 : </span> <input value="${user_DetailsVo.user_Address1 }"
-                              type="text" id=user_Address1 placeholder="우편번호" name="user_Address1"
+                           <span class="registraionLable">우편번호 : </span> <input
+                              value="${user_DetailsVo.user_Address1 }" type="text"
+                              id=user_Address1 placeholder="우편번호" name="user_Address1"
                               style="width: 620px; margin-left: 30px;"
                               class="css_input_userInfo_email"><br>
                         </div>
                         <div>
-                           <span class="registraionLable">도로명주소 : </span> <input value="${user_DetailsVo.user_Address2 }"
-                              type="text" id="user_Address2" placeholder="기본 주소"
-                              name="user_Address2" style="width: 620px;"
+                           <span class="registraionLable">도로명주소 : </span> <input
+                              value="${user_DetailsVo.user_Address2 }" type="text"
+                              id="user_Address2" placeholder="기본 주소" name="user_Address2"
+                              style="width: 620px;" class="css_input_userInfo_email" />
+                        </div>
+                        <div>
+                           <span class="registraionLable">상세 주소 : </span> <input
+                              value="${user_DetailsVo.user_Address3 }" type="text"
+                              id="user_Address3" placeholder="상세 주소 " name="user_Address3"
+                              style="width: 620px; margin-left: 25px;"
                               class="css_input_userInfo_email" />
                         </div>
                         <div>
-                           <span class="registraionLable">상세 주소 : </span> <input value="${user_DetailsVo.user_Address3 }"
-                              type="text" id="user_Address3" placeholder="상세 주소 "
-                              name="user_Address3" style="width: 620px; margin-left: 25px;"
-                              class="css_input_userInfo_email" />
-                        </div>
-                        <div>
-                           <span class="registraionLable">수령인 이름 : </span> <input value="${user_DetailsVo.user_Name }"
-                              type="text" id="user_Name" placeholder="수령인 이름 "
-                              name="user_Name" style="width: 620px;"
-                              class="css_input_userInfo_email" />
+                           <span class="registraionLable">수령인 이름 : </span> <input
+                              value="${user_DetailsVo.user_Name }" type="text"
+                              id="user_Name" placeholder="수령인 이름 " name="user_Name"
+                              style="width: 620px;" class="css_input_userInfo_email" />
                         </div>
                         <select name="other" id="other"
                            onchange="showfield(this.options[this.selectedIndex].value)"
@@ -678,7 +681,8 @@ zipbtn {
                            <option value="부재시 문앞에 놓아주세요">부재시 문앞에 놓아주세요</option>
                            <option value="배송전에 미리 연락주세요">배송전에 미리 연락주세요</option>
                            <option value="부재시 경비실에 맡겨 주세요">부재시 경비실에 맡겨 주세요</option>
-                           <option value="부재시 전화주시거나 문자 남겨주세요">부재시 전화주시거나 문자 남겨주세요</option>
+                           <option value="부재시 전화주시거나 문자 남겨주세요">부재시 전화주시거나 문자
+                              남겨주세요</option>
                            <option value="Other">직접입력</option>
                         </select>
                         <div id="div1"></div>
@@ -689,18 +693,19 @@ zipbtn {
                      <h2 class="h2_test">주 문 자</h2>
                      <tr>
                         <div>
-                           <span class="registraionLable">이 름 : </span> <input type="text" value="${user_DetailsVo.user_Name }"
-                              id="user_Name" placeholder="이름" name="f_postal1"
+                           <span class="registraionLable">이 름 : </span> <input type="text"
+                              value="${user_DetailsVo.user_Name }" id="user_Name"
+                              placeholder="이름" name="f_postal1"
                               style="width: 630px; margin-left: 33px;"
                               class="css_input_userInfo_email"><br>
                         </div>
 
                         <div>
                            <span class="registraionLable">이 메 일 : </span> <input
-                              value="${mail }" class="css_input_userInfo_email4" type="text" id="user_email"
-                              name="user_email" placeholder="이메일" style="margin-left: 13px;">
-                           &nbsp <span>@</span> &nbsp <select name="travel_arriveVia"
-                              id="travel_arriveVia" 
+                              value="${mail }" class="css_input_userInfo_email4" type="text"
+                              id="user_email" name="user_email" placeholder="이메일"
+                              style="margin-left: 13px;"> &nbsp <span>@</span> &nbsp
+                           <select name="travel_arriveVia" id="travel_arriveVia"
                               onchange="showfield2(this.options[this.selectedIndex].value)"
                               class="css_product_select">
                               <option selected="selected">${mail2 }</option>
@@ -718,9 +723,10 @@ zipbtn {
                         </div>
 
                         <div>
-                           <span class="registraionLable">전화 번호 : </span> <input  value="${user_DetailsVo.user_Tel }"
-                              type="text" id="user_Tel" placeholder="전화 번호 "
-                              name="user_Tel" style="width: 630px; margin-left: 2px;"
+                           <span class="registraionLable">전화 번호 : </span> <input
+                              value="${user_DetailsVo.user_Tel }" type="text" id="user_Tel"
+                              placeholder="전화 번호 " name="user_Tel"
+                              style="width: 630px; margin-left: 2px;"
                               class="css_input_userInfo_email" />
                         </div>
                      </tr>
@@ -732,22 +738,38 @@ zipbtn {
                         <th class="text_placehorder" colspan="2">주식회사 : 공간 <b
                            class="tablebox_right">배송비 착불: 무료</b></th>
                      </tr>
-
-                     <tr>
-                        <td rowspan="3" style="background-color: white;"><img
-                           src="productImg/${productVo.product_Main }"></td>
-                        <td class="" style="background-color: white;">${productVo.product_Name }</td>
-                     </tr>
-                     <tr>
-                        <td style="background-color: white;"> ${onePrice2 }원 (1개)  </td>
-                     </tr>
-                     <tr>
-                        <td style="background-color: white;">총 ${count }개 ${productVo.product_Price2 }원 </td>
-                     </tr>
+                     <c:if test="${Cartlist == null }">
+                        <tr>
+                           <td rowspan="3" style="background-color: white;"><img
+                              src="productImg/${productVo.product_Main }"></td>
+                           <td class="" style="background-color: white;">${productVo.product_Name }</td>
+                        </tr>
+                        <tr>
+                           <td style="background-color: white;">${onePrice2 }원 (1개)</td>
+                        </tr>
+                        <tr>
+                           <td style="background-color: white;">총 ${count} 개 ${productVo.product_Price2 }원</td>
+                        </tr>
+                     </c:if>
+                     <c:if test="${Cartlist != null }">
+                        <c:forEach items="${Cartlist }" var="cart">
+                           <tr>
+                              <td rowspan="3" style="background-color: white;"><img
+                                 src="productImg/${cart.product_Main }"></td>
+                              <td class="" style="background-color: white;">${cart.product_Name }</td>
+                           </tr>
+                           <tr>
+                              <td style="background-color: white;">${cart.product_Price3}원 (1개)
+                              </td>
+                           </tr>
+                           <tr>
+                              <td style="background-color: white;">총 ${cart.product_Num }
+                                 개 ${cart.product_Price2 }원</td>
+                           </tr>
+                        </c:forEach>
+                     </c:if>
+                     
                   </table>
-
-
-
 
                </div>
                <!-- 결제금액 테이블 -->
@@ -758,7 +780,7 @@ zipbtn {
                   <table style="margin-left: 27%; width: 850px;">
                      <tr>
                         <td class="registraionLable" align="left">총 삼품 금액</td>
-                        <td class="txtright"><b>${productVo.product_Price2 }원</b></td>
+                        <td class="txtright"><b>${All_price2}원</b></td>
                      </tr>
                      <tr>
                         <td class="registraionLable">배송비</td>
@@ -777,31 +799,30 @@ zipbtn {
                   <br> <br>
                   <div style="margin-left: 50%;">
                      <!-- <button type="submit" value="결제하기" class="css_input_btn" onclick="">결제하기</button> -->
-                     <button type="button" value="결제하기" class="css_input_btn" 
-                        onclick="payBtn(${s_ID },${count },${productVo.product_Number })">결제하기</button>
+                     <button type="button" value="결제하기" class="css_input_btn"
+                        onclick="payBtn(${user_DetailsVo.user_Id },${count },${productVo.product_Number },${All_price })">결제하기</button>
                   </div>
                </div>
                <!-- 결제금액 테이블  끝-->
             </div>
             <!-- 배송지 테이블 끝-->
-            <input type="hidden" name="s_id" value="${s_ID }"> 
-            <input type="hidden" name="count" value="${count }"> 
-            <input type="hidden" name="product_Price" value="${productVo.product_Price }"> 
-            <input type="hidden" name="product_Number" value="${productVo.product_Number }"> 
-            <input type="hidden" name="user_Name" value="${user_DetailsVo.user_Name }"> 
+
          </form>
       </section>
-      
+
       <script type="text/javascript">
+      
+      
       //상품결제
-      function payBtn(s_id,count,product_Number){
+      function payBtn(s_id,count,product_Number,All_price){
          $.ajax({
-            url:'ProductOrderCheck' ,
-            dataType:'post' ,
+            url:'ProductOrderCheck',
+            dataType:'post',
             data:{  
                "s_id":s_id,
                "count":count,
                "product_Number":product_Number,
+               "All_price":All_price,
                "user_Name":$("#user_Name").val(),            
                "user_Address1":$("#user_Address1").val(),      
                "user_Address2":$("#user_Address2").val(),               
@@ -822,7 +843,8 @@ zipbtn {
             data:{  
                "s_id":s_id,
                "count":count,
-               "product_Number":product_Number
+               "product_Number":product_Number,
+               "All_price":All_price
             },
             dataType:'json' ,
             success:function(data){
@@ -837,8 +859,8 @@ zipbtn {
        }
       
    </script>
-      
-      
+
+
       <!-- top -->
       <a
          style="display: scroll; position: fixed; bottom: 10px; right: 20px; cursor: pointer;"

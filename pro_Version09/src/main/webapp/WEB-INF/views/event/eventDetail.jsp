@@ -76,7 +76,27 @@
 						//alert(data.eventVo.event_date);
 						var html = "";
 						
-						html += ' <ul id='+ data.eventVo.user_nickname +'> ';
+						html += ' <ul style="margin: 1%;"> ';
+                        html += ' <li class="comment-feed__item__content__author__name" ';
+                        html += ' class="name" style="font-size: 15px;color: #424242; font-weight: 700; margin: 1%;">'+ data.eventVo.user_nickname +'';
+                        html += ' &nbsp;&nbsp;<span class="txt" style="font-size: 15px; color: #424242; font-weight: 500;">'+ data.eventVo.event_content +'</span><br>';
+                        html += ' <span style="font-size: 12px; color: #757575; font-weight: 500;">'+ data.eventVo.event_date +'&nbsp;&nbsp;&nbsp;&nbsp;</span> ';
+                        
+                        if ('${session_nickName}' == data.eventVo.user_nickname) {
+                           
+	                        html += ' <span class="btn"> ';
+	                        html += ' <a onclick="commentDelete('+data.eventVo.user_nickname+')" ';
+	                        html += ' class="comment-feed__item__footer__reply-btn" class="rebtn">삭제&nbsp;</a> ';
+                        
+                      		html += ' </span> ';
+                        }
+                        html += ' <span class="btn"><a class="comment-feed__item__footer__reply-btn" class="rerebtn">답글</a></sapn><p/> ';
+                        html += ' </li> ';
+                        html += ' </ul> ';  
+						
+						
+						//-----------------------------------------------------------------------------------------
+						/* html += ' <ul id='+ data.eventVo.user_nickname +'> ';
 						html += ' <li class="comment-feed__item__content__author__name" ';
 						html += ' class="name">'+ data.eventVo.user_nickname +'</li> ';
 						html += ' <li class="txt">'+ data.eventVo.event_content +'</li> ';
@@ -91,7 +111,7 @@
 						}
 						html += ' <li class="btn"><a class="comment-feed__item__footer__reply-btn" class="rerebtn">답글 달기</a></li> ';
 						html += ' </ul> ';
-						html += '  '; 
+						html += '  ';  */
 						
 						$("#content").prepend(html);
 						$("#event_content").val(""); 
@@ -101,6 +121,7 @@
 						alert("error");
 					}
 				});
+		return false;
 	}
 </script>
 <style type="text/css">
@@ -305,28 +326,7 @@ footer {
 <div class="main_wrap">
 	<div class="competition-page">
 		<img class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke1.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke2.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke3.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke4.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/info.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke5.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke6.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke7.png"> <img
-			class="competition-page__image" alt=""
-			src="img/event/bespoke/bespoke8.png">
-		<div class="drop-down">
-			
-		</div>
-
-
+			src="img/event/bespoke/${eventVo.event_Serve }">
 		<!-- 댓글 시작 -->
 		<div class="competition-page__comment">
 			<section class="comment-feed">
@@ -334,7 +334,7 @@ footer {
 					댓글&nbsp;<span class="comment-feed__header__count">${map.commentCount}</span>
 				</h1>
 				<!-- 댓글 입력창 시작 -->
-				<form class="comment-feed__form">
+				<form class="comment-feed__form" onsubmit="return commentBtn()">
 					<div class="comment-feed__form__input">
 						<div class="comment-feed__form__content">
 							<div class="comment-content-input">
@@ -346,7 +346,7 @@ footer {
 						<div class="comment-feed__form__actions">
 							<!-- <input type="hidden" name="e_id"  value=""> -->
 							<button class="comment-feed__form__submit" aria-label="등록"
-								type="button" onclick="commentBtn()">등록</button>
+								type="submit" >등록</button>
 						</div>
 					</div>
 				</form>

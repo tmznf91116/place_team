@@ -25,6 +25,7 @@ public class UserCartVo {
 	    // 제품가격 
 	    private Integer product_Price;
 	    private String product_Price2;
+	    private String product_Price3;
 	
 	    // 상품이미지 
 	    private String product_Main;

@@ -65,7 +65,7 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>6</version>
 			<scope>system</scope>
-			<systemPath>C:\workspace\pro_Version09\pro_Version09\src\main\webapp\WEB-INF\lib\ojdbc6_g.jar</systemPath>
+			<systemPath>C:\workspace\pro_Version09\src\main\webapp\WEB-INF\lib\ojdbc6_g.jar</systemPath>
 		</dependency>
 		<!-- commons-io -->
 		<dependency>

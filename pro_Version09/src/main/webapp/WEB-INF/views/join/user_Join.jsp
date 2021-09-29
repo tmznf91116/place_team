@@ -272,7 +272,7 @@ footer {
              $("#emailCheckBtn").html(html);
               $("#emailCheckDiv").append("<input type='button' class='css_input_btn' value='인증완료' style='background-color: #01f8ff'>");
           }else{
-             alert("error");
+        	  alert("인증번호가 일치하지 않습니다.");
           }
        }
     </script>

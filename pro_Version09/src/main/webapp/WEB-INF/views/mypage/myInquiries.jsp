@@ -327,63 +327,7 @@ footer {
       <!-- 마이페이지 네비게이션 끝 -->
    </header>
    <!-- Header End -->
-   <!-- section begin -->
-   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-   <script type="text/javascript">
-      function conListAll(user_Nickname){
-         $.ajax({
-            url : "/conList",
-            type : "post",
-            data : {
-               'user_Nickname':user_Nickname
-            },
-            success : function(data) {
-               var html = "";
-               for(i in data){
-               html += ' <tr> ';
-               html += ' <td class="table_td">'+data[i].reply_Check+'<!-- 번호 --></td> ';
-               html += ' <td class="table_td"><c:if test="'+(data[i].reply_Check)+'==1">▶</c:if><a href="InquiriesCompany?cd_id='+data[i].cd_Id+'"><mark>'+data[i].cd_Title+'</mark></a><!-- 제목 --></td> ';              
-               html += ' <td class="table_td">'+data[i].user_Nickname+'<!-- 작성자 --></td> ';
-               html += ' <td class="table_td">'+data[i].cd_Bdate+'<!-- 작성일 --></td> ';
-               html += ' </tr> ';                  
-               }
-               $("#AllConIq").html(html);
-            },
-            error : function() {
-               alert("error");
-            }
-         });
-      }
-   </script>
-   <h2>시공문의내역</h2>
-   <section>
-   <div>
-      <table>
-         <thead>
-            <tr>
-               <th class="table_th">답변현황</th>
-               <th class="table_th">제목</th>
-               <th class="table_th">작성자</th>
-               <th class="table_th">작성일</th>
-            </tr>
-         </thead>
-         <tbody id="AllConIq">
-            <!-- for문############################################## -->
-            <c:forEach items="${Ilist }" var="cIVo" end="3" >
-               <tr>
-                  <td class="table_td">${cIVo.reply_Check} <!-- 번호 --></td>
-                  <td class="table_td"><c:if test="${cIVo.cd_Bstep == 1}">▶</c:if><a href="InquiriesCompany?cd_id=${cIVo.cd_Id}"><mark>${cIVo.cd_Title}</mark></a><!-- 제목 --></td>
-                  <%-- <td class="table_td"><mark>${cIVo.cd_Title} </mark><!-- 제목 --></td> --%>
-                  <td class="table_td">${cIVo.user_Nickname} <!-- 작성자 --></td>
-                  <td class="table_td">${cIVo.cd_Bdate} <!-- 작성일 --></td>
-               </tr>
-            </c:forEach>
-         </tbody>
-         <!-- for문############################################## -->
-      </table>
-   </div>
-   <a href="javascript:void(0);" onclick="conListAll('${session_nickName}'); "><span>더보기</span></a>
-   </section>
+   <!-- 일반문의 -->
    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
    <script type="text/javascript">
       function userListAll(user_Nickname){
@@ -441,6 +385,65 @@ footer {
    </div>
       <a href="javascript:void(0);" onclick="userListAll('${session_nickName}'); "><span>더보기</span></a>
    </section>
+   <!-- 일반문의 끝 -->
+   <!-- 시공문의 -->
+   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <script type="text/javascript">
+      function conListAll(user_Nickname){
+         $.ajax({
+            url : "/conList",
+            type : "post",
+            data : {
+               'user_Nickname':user_Nickname
+            },
+            success : function(data) {
+               var html = "";
+               for(i in data){
+               html += ' <tr> ';
+               html += ' <td class="table_td">'+data[i].reply_Check+'<!-- 번호 --></td> ';
+               html += ' <td class="table_td"><c:if test="'+(data[i].reply_Check)+'==1">▶</c:if><a href="InquiriesCompany?cd_id='+data[i].cd_Id+'"><mark>'+data[i].cd_Title+'</mark></a><!-- 제목 --></td> ';              
+               html += ' <td class="table_td">'+data[i].user_Nickname+'<!-- 작성자 --></td> ';
+               html += ' <td class="table_td">'+data[i].cd_Bdate+'<!-- 작성일 --></td> ';
+               html += ' </tr> ';                  
+               }
+               $("#AllConIq").html(html);
+            },
+            error : function() {
+               alert("error");
+            }
+         });
+      }
+   </script>
+   <h2>시공문의내역</h2>
+   <section>
+   <div>
+      <table>
+         <thead>
+            <tr>
+               <th class="table_th">답변현황</th>
+               <th class="table_th">제목</th>
+               <th class="table_th">작성자</th>
+               <th class="table_th">작성일</th>
+            </tr>
+         </thead>
+         <tbody id="AllConIq">
+            <!-- for문############################################## -->
+            <c:forEach items="${Ilist }" var="cIVo" end="3" >
+               <tr>
+                  <td class="table_td">${cIVo.reply_Check} <!-- 번호 --></td>
+                  <td class="table_td"><c:if test="${cIVo.cd_Bstep == 1}">▶</c:if><a href="InquiriesCompany?cd_id=${cIVo.cd_Id}"><mark>${cIVo.cd_Title}</mark></a><!-- 제목 --></td>
+                  <%-- <td class="table_td"><mark>${cIVo.cd_Title} </mark><!-- 제목 --></td> --%>
+                  <td class="table_td">${cIVo.user_Nickname} <!-- 작성자 --></td>
+                  <td class="table_td">${cIVo.cd_Bdate} <!-- 작성일 --></td>
+               </tr>
+            </c:forEach>
+         </tbody>
+         <!-- for문############################################## -->
+      </table>
+   </div>
+   <a href="javascript:void(0);" onclick="conListAll('${session_nickName}'); "><span>더보기</span></a>
+   </section>
+   <!-- 시공문의 끝 -->
          <!-- top -->
       <a
          style="display: scroll; position: fixed; bottom: 10px; right: 20px; cursor: pointer;"

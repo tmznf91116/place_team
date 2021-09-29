@@ -35,7 +35,6 @@ body {
 .main_wrap {
    margin-top: 148px;
 }
-
 header {
    position: fixed;
    width: 100%;
@@ -44,11 +43,9 @@ header {
    background-color: rgb(251, 251, 251);
    border-bottom: 1px solid #dbdbdb;
 }
-
 section {
    text-align: center;
 }
-
 .css_inquiries_input {
    text-align: left;
    width: 26%;
@@ -62,7 +59,6 @@ section {
    resize: none;
    -webkit-appearance: none;
 }
-
 .css_input_btn {
    width: 26%;
    padding: 8px 8px 8px 8px;
@@ -270,8 +266,8 @@ footer {
             name="cd_Content" rows="5%" cols="10%"
             required>
 ${inquiryVo.cd_Content }
-#######답변#######
-            </textarea>
+#######답변#######                                                  
+ </textarea>
          <p />
          <input class="css_inquiries_input" type="text" id="interiorCompany"
             name="cd_Company" value="${inquiryVo.cd_Company }" readonly>

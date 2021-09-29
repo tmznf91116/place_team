@@ -29,21 +29,6 @@
 	    		border: none;
 	    		box-sizing: border-box;
 			    align-items: center;
-	    		/* width: 100%;
-	    		height: 100%;
-	    		margin: 3%;
-				padding: 3% 3% 3% 3%;
-			    border: 1px solid #dbdbdb;
-			    background-color: #00C892;
-			    border-radius: 4px;
-			    box-sizing: border-box;
-			    align-items: center;
-			    font-weight: 700;
-			    font-size: 15px;
-			    line-height: 21px;
-			    transition: border-color .1s,background-color .1s;
-			    resize: none;
-			    -webkit-appearance: none; */
 	    	}
 	    	section{
 	    		text-align: center;
@@ -125,6 +110,10 @@
 				text-align: center;
 				margin-left: 13%;
 			}
+			table {
+				text-align: center;
+				margin-left: 15%;
+			}
 			a:link {
 				color: black;
 				text-decoration: none;
@@ -176,12 +165,16 @@
 	    			  	//alert("listsize");
 	    				
 	    			  	for(i in listsize){
+	    			  		
 	    			  		html += '<form action="selectModfiy"><input type="hidden" name="deleteNum" value="'+list[i].product_Number+'">';
-	    			  		html += ' <span>상품번호 : '+list[i].product_Number+' </span>&nbsp;|&nbsp;<span>상품명 : '+list[i].product_Name+'</span>&nbsp;|&nbsp; ';
-	    			  		html += ' <span>상품가격 : <input type="text" name="ModfiyPrice" id="'+list[i].product_Price+'" value="'+list[i].product_Price+'"></span>&nbsp;|&nbsp; ';
-	    			  		html += ' <span>재고 : <input type="text" name="ModfiyPriceStock" id="'+list[i].product_Stock+'" value="'+list[i].product_Stock+'"></span>&nbsp; | &nbsp; ';
-	    			  		html += ' <span><input type="submit" value="수정" onclick="">&nbsp; | &nbsp;<input type="button" value="삭제" onclick="productDelete('+list[i].product_Number+')"></span><p/></form> ';
-	    			  	
+	    			  		html += '<tr><td><span>상품번호 : </span><span>'+list[i].product_Number+'</span></td>';
+	    			  		html += '<td><span>상품명 : </span><span>'+list[i].product_Name+'</span></td>';
+	    			  		html += '<td><span>상품가격 : </span><span><input type="text" name="ModfiyPrice" id="'+list[i].product_Price+'" value="'+list[i].product_Price+'"></span></td>';
+	    			  		html += '<td><span>재고 : </span><span><input type="text" id="'+list[i].product_Stock+'" name="ModfiyPriceStock" value="'+list[i].product_Stock+'"></span></td>';
+	    			  		html += '<td><span><input type="submit" value="수정" onclick=""></span></td>';
+	    			  		html += '<td><span><input type="button" value="삭제" onclick="productDelete('+list[i].product_Number+')"></span></td></tr></form>';
+	    			  		
+	    			  			    			  		
 	    			  	}
 	    			  	
 	    				 $(".listprint").html(html);
@@ -207,14 +200,11 @@
 	    	</form>
 	    </section>
 	    <!-- 검색리스트출력 -->
-	    	<ul class="listprint">
-	    			
-	    	</ul>
+	    	<table>
+				<tbody class="listprint">
+					
+				</tbody>    	
+	    	</table>
 	    <!-- 검색리스트출력 -->
-		<footer>
-				© &nbsp;
-				<a class="aTag" href="index">Project_Interior</a>
-				<span>Leesangbum</span>
-		</footer>
 	</body>
 </html>

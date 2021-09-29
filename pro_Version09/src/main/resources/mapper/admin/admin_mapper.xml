@@ -129,9 +129,8 @@
 	<update id="updateLocationUpDate" >
 	    UPDATE Delivery_Status set 
         delivery_Location = #{location}
-        where user_Id = #{deliveryVo.user_Id}
-        and product_Count = #{deliveryVo.product_Count}
-        and product_Number = #{deliveryVo.product_Number}
+        where user_Id = #{user_Id}
+        
 	</update>
 
 

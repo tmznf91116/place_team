@@ -270,8 +270,8 @@ footer {
             name="ud_Content" rows="5%" cols="10%"
             required>
 ${inquiryVo.ud_Content }
-#######답변#######
-            </textarea>
+#######답변#######                                                  
+ </textarea>
          <p />
        
          

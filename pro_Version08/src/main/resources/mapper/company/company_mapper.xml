@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.CompanyMapper">
+
+	<select id="" resultType="com.site.p0823.Vo.InquiryVo">
+
+	</select>
+
+	<!-- //컴퍼니 원룸 리스트 -->
+	<select id="oneAll" resultType="com.site.p0823.Vo.CompanyVo">
+		select * from
+		construction_company
+		where cc_categories like '%' || #{one} || '%'
+		order by cc_id desc
+	</select>
+	
+	<!-- //컴퍼니 아파트 리스트 -->
+	<select id="aptAll" resultType="com.site.p0823.Vo.CompanyVo">
+		select * from
+		construction_company
+		where cc_categories like '%'||#{one}||'%'
+		order by cc_id desc
+	</select>
+	
+	<!-- //컴퍼니 빌라 리스트 -->
+	<select id="solAll" resultType="com.site.p0823.Vo.CompanyVo">
+		select * from
+		construction_company
+		where cc_categories like '%'||#{one}||'%'
+		order by cc_id desc
+	</select>
+
+
+	<!-- 업체 메인 리스트 -->
+	<select id="selectCompanyList"
+		resultType="com.site.p0823.Vo.CompanyVo">
+		select * from Construction_Company
+		order by cc_id desc
+	</select>
+
+	<!-- 업체 상세 리스트 -->
+	<select id="selectCompanyOne"
+		resultType="com.site.p0823.Vo.CompanyVo">
+		select * from Construction_Company
+		where cc_id = #{cc_Id}
+	</select>
+
+
+	<!-- 시공의뢰 등록 저장 -->
+	<insert id="insertInquirySave">
+		INSERT INTO Construction_Inquiry
+		(
+		cd_id,
+		CD_title,
+		CD_content,
+		CD_company,
+		user_nickname,
+		CD_bgroup,
+		CD_bstep,
+		CD_bdate,
+		CD_bhit)
+		VALUES
+		(
+		Construction_Inquiry_SEQ.nextval,
+		#{cd_Title},
+		#{cd_Content},
+		#{cd_Company},
+		#{user_Nickname},
+		Construction_Inquiry_SEQ.currval,
+		0,
+		sysdate,
+		0)
+	</insert>
+
+
+	<!-- 업체등록 등록 저장 -->
+	<insert id="insertCompanyOne">
+
+		INSERT INTO Construction_Company
+		(CC_Cname,
+		CC_nember,
+		CC_home,
+		CC_pname,
+		CC_tel,
+		CC_mail,
+		CC_categories,
+		CC_main,
+		CC_introduction,
+		CC_ADDRESS1,
+		CC_ADDRESS2,
+		CC_ADDRESS3,
+
+		user_id)
+		VALUES
+		(#{cc_Cname},
+		#{cc_Nember},
+		#{cc_Home},
+		#{cc_Pname},
+		#{cc_Tel},
+		#{cc_Mail},
+		#{cc_Categories},
+		#{cc_Main},
+		#{cc_Introduction},
+		#{cc_Address1},
+		#{cc_Address2},
+		#{cc_Address3},
+
+		#{user_Id})
+	</insert>
+
+
+
+
+
+
+
+</mapper>

@@ -145,8 +145,8 @@ public class AdminServiceImpl implements AdminService {
 
 	// 관리자 배송현황 업데이트
 	@Override
-	public void updateLocationUpDate(Delivery_StatusVo delivery_StatusVo,String Location) {
-		adminMapper.updateLocationUpDate(delivery_StatusVo, Location);
+	public void updateLocationUpDate(int user_Id ,String Location) {
+		adminMapper.updateLocationUpDate(user_Id, Location);
 	}
 
 }// class

@@ -37,7 +37,7 @@ public class inquiresBoardController {
 	@PostMapping("inquiresComAnswerOk")
 	public String inquiresComAnswerOk(Construction_InquiryVo construction_InquiryVo) {
 		inquiresBoardService.insertComInquiresSet(construction_InquiryVo);
-		return "/admin/inquiriesDetails";
+		return "redirect:/inquiriesDetails";
 	}
 	
 	//일반문의내역 내용 가지고오기
@@ -59,7 +59,7 @@ public class inquiresBoardController {
 	@PostMapping("inquiresUserAnswerOk")
 	public String inquiresUserAnswerOk(user_InquiryVo user_InquiryVo) {
 		inquiresBoardService.insertUserInquiresSet(user_InquiryVo);
-		return "/admin/inquiriesDetails";
+		return "redirect:/inquiriesDetails";
 	}
 	
 	

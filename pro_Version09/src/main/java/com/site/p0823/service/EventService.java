@@ -24,6 +24,8 @@ public interface EventService {
 		//이벤트 리스트
 		ArrayList<EventListVo> selecteventList();
 
+		EventListVo selecteventListOne(int event_id);
+
 	
 
 

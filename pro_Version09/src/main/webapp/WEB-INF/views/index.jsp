@@ -301,10 +301,14 @@ footer {
       <section id="mainSection" class="feature-property-section spad">
          <div class="fp-slider owl-carousel">
             <!-- 메인상단 이미지 추가 공간 -->
-            <div id="mainimage" class="fp-item set-bg">
-               <img class="competition-item__image" src="img/event/event1.png">
-            </div>
-            <div id="mainimage" class="fp-item set-bg">
+            <c:forEach items="${eventList }" var="elist" end="4">
+            <a href="eventDetail?event_id=${elist.event_id }">
+	            <div id="mainimage" class="fp-item set-bg">
+	               <img class="competition-item__image" src="img/event/${elist.event_Main }">
+	            </div>
+            </a>
+            </c:forEach>
+            <!-- <div id="mainimage" class="fp-item set-bg">
                <img class="competition-item__image" src="img/event/event2.png">
             </div>
             <div id="mainimage" class="fp-item set-bg">
@@ -312,7 +316,7 @@ footer {
             </div>
             <div id="mainimage" class="fp-item set-bg">
                <img class="competition-item__image" src="img/event/event4.png">
-            </div>
+            </div> -->
             <!-- 메인상단 이미지 추가 공간 -->
          </div>
       </section>
@@ -831,17 +835,16 @@ footer {
             </div>
             <div class="row property-filter" id="furniture">
                <c:forEach items="${communityList }" var="plist" end="5">
-
-                  <a href="store2?product_Number=${plist.com_Num }">
+                  <a href="communityDetails?com_Num=${plist.com_Num }">
                      <div class="col-lg-4 col-md-6 mix all furniture">
                         <div class="property-item">
                            <div class="imgHover">
                               <img class="pi-pic set-bg" alt=""
-                                 src="communityImg/${plist.com_Img1 }" style="width: 100%;">
+                                 src="communityImg/${plist.com_Img1 }" style="width: 360px;">
                            </div>
                            <div class="pi-text">
                               <h5>${plist.com_Title }</h5>
-                              <p>${plist.user_Nickname }</p>
+                              <a href="communityDetails?com_Num=${plist.com_Num }"><p>${plist.user_Nickname }</p></a>
                               
                            </div>
                         </div>

@@ -70,8 +70,7 @@ public class communityController {
 			String comm_3 = String.format("%s", comm3);
 
 			// 파일저장위치
-			//String fileUrl = "C:/workspace/pro_Version09/pro_Version09/src/main/resources/static/communityImg/";
-			String fileUrl = "C:/Users/jmp/git/repository/pro_Version09/src/main/resources/static/communityImg/";
+			String fileUrl = "C:/Users/82109/git/Project_lastFile/pro_Version09/src/main/resources/static/communityImg/";
 			// 복사할 파일
 			File f1 = new File(fileUrl + comm1);
 			File f2 = new File(fileUrl + comm2);

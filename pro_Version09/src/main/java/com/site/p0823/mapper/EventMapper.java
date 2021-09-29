@@ -34,6 +34,8 @@ public interface EventMapper {
 		//이벤트리스트
 		ArrayList<EventListVo> selecteventList();
 
+		EventListVo selecteventListOne(int event_id);
+
 		
 
 

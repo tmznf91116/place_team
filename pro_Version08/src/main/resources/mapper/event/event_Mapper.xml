@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.p0823.mapper.EventMapper">
+
+	<!-- 페이지  -->
+	<select id="selecteventList" resultType="com.site.p0823.Vo.EventListVo" >
+	 select * from event_page
+  	  order by event_id desc
+	</select>
+
+	<!-- 댓글 전체 리스트 -->
+	<select resultType="com.site.p0823.Vo.EventVo" id="selectCommentAll">
+		select * from 
+		(select rownum rnum,e.* from
+			(select * from event_comments where event_id=#{event_id}
+			order by event_no desc) e)
+			where rnum between #{startrow} and #{endrow}
+			<!-- select * from event_comments where event_id=#{event_id} -->
+	</select>
+	
+	<!-- 댓글 총 개수  -->
+	<select id="selectCommentCount" resultType="int">
+		select count(*) from Event_Comments where event_id=#{event_id}
+	</select>
+	
+	<!-- 댓글 1개 리스트  -->
+	<select id="selectCommentWrite" resultType="com.site.p0823.Vo.EventVo">
+		select * from Event_Comments where event_no = #{event_no}
+	</select>
+	
+	<!-- 댓글 추가 -->
+	<insert id="eventInsertCommentWrite">
+	   <selectKey resultType="int" keyProperty="event_no" order="BEFORE">
+	     select event_comments_seq.nextval from dual
+	   </selectKey>
+	   insert into event_comments values(
+	     #{event_no},#{event_content},sysdate,#{user_nickname},#{event_id}
+	   )
+	</insert>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateCommentModify">
+	    update Event_Comments set event_content=#{event_content}, event_date=sysdate
+	    where event_no=#{event_no}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComment">
+	    delete Event_Comments where event_no=#{event_no}
+	</delete>
+
+	
+
+
+</mapper>

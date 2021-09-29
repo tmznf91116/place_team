@@ -9,17 +9,19 @@
       resultType="com.site.p0823.Vo.user_InquiryVo">
       select * from
       user_inquiry
-      order by ud_bgroup desc,ud_bstep asc
+      order by ud_bgroup desc,ud_bstep
+      asc
    </select>
    <!-- 시공 문의내역 불러오기 -->
    <select id="selectInquiryList"
       resultType="com.site.p0823.Vo.Construction_InquiryVo">
       select * from
       Construction_Inquiry
-      order by cd_bgroup desc,cd_bstep asc
+      order by cd_bgroup
+      desc,cd_bstep asc
    </select>
-   
-   
+
+
    <!-- 댓글 불러오기 -->
    <select id="setletEventMylist"
       resultType="com.site.p0823.Vo.EventVo">
@@ -33,7 +35,8 @@
    <select id="selectUserMainImgGet"
       resultType="com.site.p0823.Vo.UserVo">
       select * from user_info i, user_Main m
-      where i.user_id = m.user_id
+      where i.user_id =
+      m.user_id
       and i.user_nickname = #{nickname}
    </select>
 
@@ -80,8 +83,15 @@
    <!-- 장바구니 선택한 제품 삭제 -->
    <delete id="productCartDelete">
       delete from user_cart
-      where user_id = #{user_Id} and product_number = #{product_Number}
+      where user_id = #{user_Id} and
+      product_number = #{product_Number}
    </delete>
+   <!-- 구매시 장바구니 삭제 -->
+   <delete id="deleteSelectIdAllBuy">
+      delete from user_cart
+      where user_id = #{s_id}
+   </delete>
+
 
 
    <!-- 구매리스트 출력 -->
@@ -91,7 +101,8 @@
       where
       p.product_number = d.product_number
       and d.user_id = #{s_id}
-      ORDER by delivery_date desc
+      ORDER by
+      delivery_date desc
 
    </select>
 
@@ -103,6 +114,13 @@
       where product_Number =
       #{product_Number}
    </select>
+   <!-- 구매 리스트에서 배송 출발하기전에 삭제 -->
+   <delete id="deleteBuyDeliverySet">
+      delete Delivery_Status where user_id = #{Vo.user_Id} and
+      product_count = #{Vo.product_Count} and product_number = #{Vo.product_Number}
+   </delete>
+
+
 
    <!-- 마이페이지 사진넣기 -->
    <insert id="insertMainImgSet">

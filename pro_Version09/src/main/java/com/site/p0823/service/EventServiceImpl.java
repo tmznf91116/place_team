@@ -8,8 +8,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.site.p0823.Vo.EventVo;
 import com.site.p0823.Vo.EventListVo;
+import com.site.p0823.Vo.EventVo;
 import com.site.p0823.mapper.EventMapper;
 
 
@@ -93,6 +93,13 @@ public class EventServiceImpl implements EventService {
 		  int commentCount = eventMapper.selectCommentCount(eventVo.getEvent_no()); 
 		  return commentCount; 
 	  }
+
+
+	@Override
+	public EventListVo selecteventListOne(int event_id) {
+		EventListVo eventVo = eventMapper.selecteventListOne(event_id);
+		return eventVo;
+	}
 
 
 	

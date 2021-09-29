@@ -430,117 +430,100 @@ footer {
     <!-- 고객문의 내역 -->
  	<div id="asideDiv">일반문의내역</div>
     <aside>
-    	<div id="asideDiv1">
-	    	<c:if test="${Ulist!=null}">
-	    		<c:forEach items="${Ulist }" var="uIVo" end="2">
-		    		
-		    		<span id="asideSpan1">
-		    			${uIVo.reply_Check }
-		    		</span>
-	    			<span id="asideSpan2">
-	    				${uIVo.ud_Title }
-		    		</span>
-		    		<span id="asideSpan3">
-		    			${uIVo.user_Nickname }
-		    		</span>
-		    		<span id="asideSpan4">
-		    			${uIVo.ud_Bdate }
-		    		</span>
-		    		<br>
-	    		
-	    		</c:forEach>
+    	<table>
+    		<c:if test="${Ulist!=null}">
+    			<c:forEach items="${Ulist }" var="uIVo" end="2">
+		    		<tr>
+		    			<td>
+		    				<span id="">${uIVo.reply_Check }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${uIVo.ud_Title }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${uIVo.user_Nickname }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${uIVo.ud_Bdate }</span>
+		    			</td>
+		    		</tr>
+    			</c:forEach>
 	    	</c:if>
 	    	<c:if test="${Ulist.size() == 0}">
-	    		<span id="asideSpan1">
-	    			<span id="asideSpan2">
-			    		<span id="asideSpan3">
-			    			문의내역이 없습니다.
-				    		<span id="asideSpan4">
-				    		</span>
-			    		</span>
-		    		</span>
-	    		</span>
+	    		<tr>
+	    			<td>
+	    				<span>문의내역이 없습니다.</span>
+	    			</td>
+	    		</tr>
 	    	</c:if>
-	    	
-    	</div>
+    	</table>
     </aside>
     <!-- 고객문의 내역 끝 -->
     
     <!-- 시공문의 내역 -->
  	<div id="asideDiv">시공문의내역</div>
     <aside>
-    	<div id="asideDiv1">
-	    	<c:if test="${Ilist!=null}">
-	    		<c:forEach items="${Ilist }" var="cIVo" end="2">
-		    		
-		    		<span id="asideSpan1">
-		    			${cIVo.reply_Check }
-		    		</span>
-	    			<span id="asideSpan2">
-	    				${cIVo.cd_Title }
-		    		</span>
-		    		<span id="asideSpan3">
-		    			${cIVo.user_Nickname }
-		    		</span>
-		    		<span id="asideSpan4">
-		    			${cIVo.cd_Bdate }
-		    		</span>
-		    		<br>
-	    		
-	    		</c:forEach>
+    	<table>
+    		<c:if test="${Ilist!=null}">
+    			<c:forEach items="${Ilist }" var="cIVo" end="2">
+		    		<tr>
+		    			<td>
+		    				<span id="">${cIVo.reply_Check }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${cIVo.cd_Title }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${cIVo.user_Nickname }</span>
+		    			</td>
+		    			<td>
+		    				<span id="asideSpan1">${cIVo.cd_Bdate }</span>
+		    			</td>
+		    		</tr>
+    			</c:forEach>
 	    	</c:if>
 	    	<c:if test="${Ilist.size() == 0}">
-	    		<span id="asideSpan1">
-	    			<span id="asideSpan2">
-			    		<span id="asideSpan3">
-			    			문의내역이 없습니다.
-				    		<span id="asideSpan4">
-				    		</span>
-			    		</span>
-		    		</span>
-	    		</span>
+	    		<tr>
+	    			<td>
+	    				<span>문의내역이 없습니다.</span>
+	    			</td>
+	    		</tr>
 	    	</c:if>
-	    	
-    	</div>
+    	</table>
+    	
     </aside>
     <!-- 시공문의 내역 끝 -->
     
     <!-- 댓글 부분 -->
  	<div id="asideDiv2">작성댓글</div>
     <aside id="aside2">
-    	<div id="asideDiv1">
+    	<table>
     		<c:if test="${Elist!=null}">
 	    		<c:forEach items="${Elist }" var="eLVo" end="2">
-		    		
-		    		<span id="asideSpan1">
-		    			${eLVo.event_no }
-		    		</span>
-	    			<span id="asideSpan2">
-	    				${eLVo.event_content }
-		    		</span>
-		    		<span id="asideSpan3">
-		    			${eLVo.user_nickname }
-		    		</span>
-		    		<span id="asideSpan4">
-		    			${eLVo.event_date }
-		    		</span>
-		    		<br>
-	    		
-	    		</c:forEach>
+		    		<tr>
+		    			<td>
+		    				<span id="">${eLVo.event_no }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${eLVo.event_content }</span>
+		    			</td>
+		    			<td>
+		    				<span id="">${eLVo.user_nickname }</span>
+		    			</td>
+		    			<td>
+		    				<span id="asideSpan1">${eLVo.event_date }</span>
+		    			</td>
+		    		</tr>
+    			</c:forEach>
 	    	</c:if>
-    		<c:if test="${Elist.size() == 0}">
-	    		<span id="asideSpan1">
-	    			<span id="asideSpan2">
-			    		<span id="asideSpan3">
-			    			작성한 댓글이 없습니다.
-				    		<span id="asideSpan4">
-				    		</span>
-			    		</span>
-		    		</span>
-	    		</span>
+	    	<c:if test="${Elist.size() == 0}">
+	    		<tr>
+	    			<td>
+	    				<span>문의내역이 없습니다.</span>
+	    			</td>
+	    		</tr>
 	    	</c:if>
-    		
-    	</div>
+    	</table>
     </aside>
     
     <!-- 댓글 부분 끝 -->

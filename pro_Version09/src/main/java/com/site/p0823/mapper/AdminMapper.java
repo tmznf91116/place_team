@@ -39,7 +39,8 @@ public interface AdminMapper {
 	//배송관리 리스트
 	ArrayList<Delivery_StatusVo> selectDeliveryList();
 	//관리자 배송현황 업데이트
-	void updateLocationUpDate(@Param("deliveryVo") Delivery_StatusVo delivery_StatusVo, @Param("location") String location);
+	void updateLocationUpDate(@Param("user_Id") int user_Id, @Param("location") String location);
+	
 	
 	
 

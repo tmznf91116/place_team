@@ -101,6 +101,10 @@
 				text-align: center;
 				margin-left: 13%;
 			}
+			table {
+				text-align: center;
+				margin-left: 30%;
+			}
 			a:link {
 				color: black;
 				text-decoration: none;
@@ -152,11 +156,20 @@
 	    			  	//alert("listsize");
 	    				
 	    			  	for(i in listsize){
+	    			  		
 	    			  		html += '<form action="companyModfiy"><input type="hidden" name="ccNum" value="'+list[i].cc_Id+'">';
+	    			  		html += '<tr><td><span>업체번호 : </span><span>'+list[i].cc_Id+'</span></td>';
+	    			  		html += '<td><span>회사이름 : </span><span>'+list[i].cc_Cname+'</span></td>';
+	    			  		html += '<td><span>담당자 : </span><span><input type="text" id="'+list[i].cc_Pname+'" name="pname" value="'+list[i].cc_Pname+'"></span></td>';
+	    			  		html += '<td><span><input type="submit" value="수정" onclick=""></span></td>';
+	    			  		html += '<td><span><input type="button" value="삭제" onclick="companyDeleteOne('+list[i].cc_Id+')"></span></td></tr></form>';
+	    			  		
+	    			  		
+	    			  		/* html += '<form action="companyModfiy"><input type="hidden" name="ccNum" value="'+list[i].cc_Id+'">';
 	    			  		html += ' <span>업체번호 : '+list[i].cc_Id+' </span>&nbsp;|&nbsp;<span>회사이름 : '+list[i].cc_Cname+'</span>&nbsp;|&nbsp; ';
 	    			  		html += ' <span>담당자 : <input type="text" name="pname" id="'+list[i].cc_Pname+'" value="'+list[i].cc_Pname+'"></span>&nbsp;|&nbsp; ';
 	    			  		html += ' <span><input type="submit" value="수정" onclick=""></span></span>&nbsp; | &nbsp;';
-	    			  		html += ' <span><input type="button" value="삭제" onclick="companyDeleteOne('+list[i].cc_Id+')"></span><p/></form> ';
+	    			  		html += ' <span><input type="button" value="삭제" onclick="companyDeleteOne('+list[i].cc_Id+')"></span><p/></form> '; */
 	    			  	}
 	    			  	
 	    				 $(".listprint").html(html);
@@ -183,14 +196,12 @@
 	    	</form>
 	    </section>
 	    <!-- 검색리스트출력 -->
-	    	<ul class="listprint">
-	    			
-	    	</ul>
+	    	<table>
+				<tbody class="listprint">
+					
+				</tbody>    	
+	    	</table>
 	    <!-- 검색리스트출력 -->
-		<footer>
-				© &nbsp;
-				<a class="aTag" href="index">Project_Interior</a>
-				<span>Leesangbum</span>
-		</footer>
+		
 	</body>
 </html>

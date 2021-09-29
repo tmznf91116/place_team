@@ -3,11 +3,8 @@ package com.site.p0823.service;
 import java.util.ArrayList;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.site.p0823.Vo.CompanyVo;
 import com.site.p0823.Vo.Delivery_StatusVo;
-import com.site.p0823.Vo.InquiryVo;
 import com.site.p0823.Vo.ProductVo;
 
 public interface AdminService {
@@ -43,6 +40,6 @@ public interface AdminService {
 	ArrayList<Delivery_StatusVo> selectDeliveryList();
 
 	// 관리자 배송현황 업데이트
-	void updateLocationUpDate(Delivery_StatusVo delivery_StatusVo,String Location);
+	void updateLocationUpDate(int user_Id,String Location);
 
 }// class

@@ -41,6 +41,10 @@ public class eventController {
 		
 		Map<String, Object> map = eventService.selectCommentAll(page,event_id);
 		
+		//이벤트디테일부분
+		EventListVo eventVo = eventService.selecteventListOne(event_id);
+		System.out.println("이벤트서브 : " + eventVo);
+		model.addAttribute("eventVo",eventVo);
 		model.addAttribute("map",map);
 		//하단 넘버링 : listCount,page,maxpage,startpage,endpage
 		return "/event/eventDetail";

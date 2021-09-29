@@ -126,6 +126,10 @@
 				text-align: center;
 				margin-left: 13%;
 			}
+			table {
+				text-align: center;
+				margin-left: 30%;
+			}
 			a:link {
 				color: black;
 				text-decoration: none;
@@ -171,28 +175,33 @@
 	    	</form>
 	    </section>
 	    <!-- 검색리스트출력 -->
-	    	<ul class="listprint">
-	    		<c:forEach items="${list }" var="dVo">
-    				<form action="LocationUpDate"><input type="hidden" name="user_id" value="${dVo.user_Id }">
-		  			  		<span>고객ID : ${dVo.user_Id }</span>&nbsp;|&nbsp;<span>상품번호 : ${dVo.product_Number }</span>&nbsp;|&nbsp; 
-		  			  		<span>상품가격 : ${dVo.total_Price2 }원</span>&nbsp;|&nbsp; 
-		  			  		<span>배송현황 : <select name="Location">
-		  			  						<option selected="selected">${dVo.delivery_Location }</option>
-		  			  						<option value="출발대기">출발대기</option>
-		  			  						<option value="상품출발">상품출발</option>
-		  			  						<option value="배송중">배송중</option>
-		  			  						<option value="배송완료">배송완료</option>
-		  			  		
-		  			  						</select> </span>&nbsp; | &nbsp; 
-		  			  		<span><input type="submit" value="저장" onclick="">&nbsp; | &nbsp;<input type="button" value="삭제" onclick=""></span><p/>
+	    <table>
+			<tbody class="listprint">
+				<c:forEach items="${list }" var="dVo">
+    				<form action="LocationUpDate"><input type="hidden" name="user_Id" value="${dVo.user_Id }">
+    					<tr>
+    						<td><span>고객ID : </span><span>${dVo.user_Id }</span></td>
+    						<td><span>상품번호 : </span><span>${dVo.product_Number }</span></td>
+    						<td><span>상품가격 : </span><span>${dVo.total_Price2 }원</span></td>
+    						<td>
+    							<span>배송현황 : </span>
+	    						<span>
+	    							<select name="Location">
+				  						<option selected="selected">${dVo.delivery_Location }</option>
+				  						<option value="출발대기">출발대기</option>
+				  						<option value="상품출발">상품출발</option>
+				  						<option value="배송중">배송중</option>
+				  						<option value="배송완료">배송완료</option>
+			  						</select> 	
+	    						</span>
+	    					</td>
+    						<td><span><input type="submit" value="저장" onclick=""></span></td>
+    						<td><span><input type="button" value="삭제" onclick=""></span></td>
+    					</tr>
   			  		</form> 
 	    		</c:forEach>
-	    	</ul>
+			</tbody>    	
+    	</table>
 	    <!-- 검색리스트출력 -->
-		<footer>
-				© &nbsp;
-				<a class="aTag" href="index">Project_Interior</a>
-				<span>Leesangbum</span>
-		</footer>
 	</body>
 </html>
