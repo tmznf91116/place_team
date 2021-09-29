@@ -66,7 +66,7 @@ public class MypageController {
       if(Main.getSize()!=0) {
          String main1 = String.format("%s", Main);
          //파일저장위치
-         String fileUrl = "C:/Users/82109/git/Project_lastFile/pro_Version09/src/main/resources/static/userImg/";
+         String fileUrl = "C:/Users/jmp/git/repository/pro_Version09/src/main/resources/static/userImg/";
          //복사할 파일
          File f = new File(fileUrl+Main);
          //파일 업로드
